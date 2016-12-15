@@ -1,5 +1,9 @@
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR})
 
+if(DEFINED WINRT AND NOT DEFINED ENABLE_WINRT_MODE_NATIVE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /ZW")
+endif()
+
 if(WIN32)
   # windows cmake internal lookups are broken for now
   # will lookup for headers and shared libs given HDF_DIR env

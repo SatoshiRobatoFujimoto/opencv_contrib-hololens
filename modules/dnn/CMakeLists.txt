@@ -6,6 +6,10 @@ if(APPLE_FRAMEWORK OR WINRT
   ocv_module_disable(dnn)
 endif()
 
+if(DEFINED WINRT AND NOT DEFINED ENABLE_WINRT_MODE_NATIVE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /ZW")
+endif()
+
 set(the_description "Deep neural network module. It allows to load models from different frameworks and to make forward pass")
 set(OPENCV_MODULE_IS_PART_OF_WORLD OFF)
 

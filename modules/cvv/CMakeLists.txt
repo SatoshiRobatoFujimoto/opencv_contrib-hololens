@@ -4,6 +4,11 @@ if(NOT HAVE_QT5)
 endif()
 
 set(the_description "Debug visualization framework")
+
+if(DEFINED WINRT AND NOT DEFINED ENABLE_WINRT_MODE_NATIVE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /ZW")
+endif()
+
 ocv_add_module(cvv opencv_core opencv_imgproc opencv_features2d WRAP python)
 
 # we need C++11 and want warnings:
